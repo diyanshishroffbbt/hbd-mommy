@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Happy Birthday Mom!</title>
+    <style>
+        body {
+            background-color: #fff8dc;
+            font-family: monospace;
+            font-size: 20px;
+            padding: 20px;
+            white-space: pre;
+        }
+    </style>
+</head>
+<body>
+
+<div id="message"></div>
+
+<script>
+let msg = 
+
+"*      Happy Birthday, Mom!        *\n" +
+"Dear Mom,\n" +
+"You are the light of my life,\n" +
+"the strength in my journey,\n" +
+"and the reason I smile every day.\n" +
+"May your birthday be filled with love,\n" +
+"happiness, and everything you deserve!\n\n" +
+"Lots of love,\n" +
+"Your's truely DIYU <3\n";
+
+let i = 0;
+let speed = 30; // normal typing speed
+
+function typeWriter() {
+    if (i < msg.length) {
+        document.getElementById("message").innerHTML += msg.charAt(i);
+        i++;
+        setTimeout(typeWriter, speed);
+    }
+}
+
+typeWriter();
+</script>
+
+</body>
+</html>
