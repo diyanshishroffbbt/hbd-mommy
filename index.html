@@ -8,27 +8,25 @@
             font-family: monospace;
             font-size: 20px;
             padding: 20px;
-            white-space: pre; /* preserve spacing */
+            white-space: pre;
             overflow: hidden;
             position: relative;
         }
         #message {
-            z-index: 10;
             position: relative;
+            z-index: 10;
         }
         .confetti {
             position: absolute;
             width: 10px;
             height: 10px;
-            background-color: red;
-            top: 0;
-            left: 50%;
-            opacity: 0.7;
-            animation: fall 3s linear infinite;
+            opacity: 0.8;
+            border-radius: 50%;
+            animation-name: fall;
+            animation-timing-function: linear;
         }
-
         @keyframes fall {
-            0% { transform: translateY(0) rotate(0deg); }
+            0% { transform: translateY(-10px) rotate(0deg); }
             100% { transform: translateY(600px) rotate(360deg); }
         }
     </style>
@@ -39,7 +37,11 @@
 
 <script>
 let msg = 
+"************************************\n" +
+"*                                  *\n" +
 "*      Happy Birthday, Mom!        *\n" +
+"*                                  *\n" +
+"************************************\n\n" +
 "Dear Mom,\n" +
 "You are the light of my life,\n" +
 "the strength in my journey,\n" +
@@ -47,45 +49,22 @@ let msg =
 "May your birthday be filled with love,\n" +
 "happiness, and everything you deserve!\n\n" +
 "Lots of love,\n" +
-"Your's truely DIYU <3\n";
+"Your Child <3\n";
 
 let i = 0;
-let speed = 30; // normal typing speed
+let speed = 30;
 
+// Typing effect
 function typeWriter() {
     if (i < msg.length) {
         document.getElementById("message").innerHTML += msg.charAt(i);
         i++;
         setTimeout(typeWriter, speed);
-    } else {
-        launchConfetti(); // start confetti after typing ends
     }
 }
 
-typeWriter();
-
-// Confetti function
-function launchConfetti() {
-    for(let j=0; j<100; j++){
-        let confetti = document.createElement("div");
-        confetti.className = "confetti";
-        confetti.style.left = Math.random() * window.innerWidth + "px";
-        confetti.style.backgroundColor = randomColor();
-        confetti.style.animationDuration = (2 + Math.random()*3) + "s";
-        confetti.style.width = (5 + Math.random()*10) + "px";
-        confetti.style.height = confetti.style.width;
-        confetti.style.top = "-10px";
-        document.body.appendChild(confetti);
-        setTimeout(()=>{ confetti.remove(); }, 5000);
-    }
-}
-
-// Random color for confetti
-function randomColor() {
-    const colors = ["#f94144","#f3722c","#f8961e","#f9c74f","#90be6d","#43aa8b","#577590","#9b5de5","#f15bb5"];
-    return colors[Math.floor(Math.random()*colors.length)];
-}
-</script>
-
-</body>
-</html>
+// Confetti effect
+function createConfetti() {
+    let confetti = document.createElement("div");
+    confetti.className = "confetti";
+    confetti.style.left = Math.random() * window.innerWidth + "px";
